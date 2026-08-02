@@ -14,13 +14,5 @@
 # limitations under the License.
 #
 
-include build/make/target/board/BoardConfigMainlineCommon.mk
-include build/make/target/board/BoardConfigPixelCommon.mk
-
-# Include settings for 16k page size kernel if enabled.
-ifneq ($(wildcard $(TARGET_KERNEL_DIR)/16kb/),)
-include device/croissandro/vsoc/BoardConfig-16k-common.mk
-endif
-
-TARGET_SOC := croissandro
-TARGET_SOC_NAME := croissandro
+# May be booted using different bootloaders, so don't have the single one.
+TARGET_NO_BOOTLOADER := true

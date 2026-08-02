@@ -1,4 +1,8 @@
 {
+  "files.associations": {
+    "*.blocklist": "makefile",
+    "*.options": "makefile",
+  },
   "[xml]": {
     "editor.defaultFormatter": "redhat.vscode-xml",
     "editor.formatOnSave": true,

@@ -14,5 +14,5 @@
 # limitations under the License.
 #
 
-TARGET_BOARD_INFO_FILE := device/croissandro/board-info.txt
-TARGET_BOOTLOADER_BOARD_NAME := croissandro
+# May be booted using different bootloaders, so don't have the single one.
+TARGET_NO_BOOTLOADER := true

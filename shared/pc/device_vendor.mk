@@ -14,14 +14,14 @@
 # limitations under the License.
 #
 
-$(call inherit-product, device/google/croissandro/aosp_common.mk)
+PRODUCT_MANIFEST_FILES += device/croissandro/shared/config/product_manifest.xml
+SYSTEM_EXT_MANIFEST_FILES += device/croissandro/shared/config/system_ext_manifest.xml
 
-PRODUCT_PROPERTY_OVERRIDES += service.adb.root=1 \
-    ro.vendor.factory=1
+$(call inherit-product, $(SRC_TARGET_DIR)/product/handheld_vendor.mk)
 
-# factory should always has SELinux permissive
-BOARD_BOOTCONFIG += androidboot.selinux=permissive
-BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/pc_core_hardware.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/pc_core_hardware.xml
 
-# Disable DebugFS restrictions in factory builds
-PRODUCT_SET_DEBUGFS_RESTRICTIONS := false
+$(call inherit-product, frameworks/native/build/tablet-7in-xhdpi-2048-dalvik-heap.mk)
+
+DEVICE_PACKAGE_OVERLAYS += device/croissandro/shared/pc/overlay

@@ -14,13 +14,8 @@
 # limitations under the License.
 #
 
-TARGET_LINUX_KERNEL_VERSION := 6.1
 
-$(call inherit-product, device/croissandro/vsoc/aosp_common.mk)
-$(call inherit-product, device/croissandro/croissandro_generic.mk)
-
-PRODUCT_NAME := aosp_croissandro
-PRODUCT_DEVICE := croissandro
-PRODUCT_MODEL := AOSP on CroissAndro
-PRODUCT_BRAND := CroissAndro
-PRODUCT_MANUFACTURER := CroissAndro
+# Reduce slab size usage from virtio vsock to reduce slab fragmentation
+options vmw_vsock_virtio_transport_common virtio_transport_max_vsock_pkt_buf_size=16384
+# TODO: Remove once CroissAndro shares a wifi implementation
+options mac80211_hwsim radios=0

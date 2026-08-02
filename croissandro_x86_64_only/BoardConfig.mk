@@ -14,11 +14,18 @@
 # limitations under the License.
 #
 
-PRODUCT_MAKEFILES := \
-    croissandro_x86_64_only_pc:$(LOCAL_DIR)/croissandro_x86_64_only/pc/croissandro.mk \
-    croissandro_arm64_only_pc:$(LOCAL_DIR)/croissandro_arm64_only/pc/croissandro.mk
+TARGET_BOARD_PLATFORM := vsoc_x86_64
+TARGET_ARCH := x86_64
+TARGET_ARCH_VARIANT := silvermont
+TARGET_CPU_ABI := x86_64
 
+# Enable native bridge to translate and run 64-bit ARM apps on this x86_64 device
+TARGET_NATIVE_BRIDGE_ARCH := arm64
+TARGET_NATIVE_BRIDGE_ARCH_VARIANT := armv8-a
+TARGET_NATIVE_BRIDGE_CPU_VARIANT := generic
+TARGET_NATIVE_BRIDGE_ABI := arm64-v8a
 
-COMMON_LUNCH_CHOICES := \
-    croissandro_x86_64_only_pc-trunk_staging-userdebug \
-    croissandro_arm64_only_pc-trunk_staging-userdebug
+# Targets only the primary system architecture (ARM64) for both libraries and the daemon
+AUDIOSERVER_MULTILIB := first
+
+-include device/croissandro/shared/BoardConfig.mk

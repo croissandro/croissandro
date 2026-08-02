@@ -14,13 +14,21 @@
 # limitations under the License.
 #
 
-TARGET_LINUX_KERNEL_VERSION := 6.1
+TARGET_BOARD_PLATFORM := vsoc_arm64
+TARGET_ARCH := arm64
+TARGET_ARCH_VARIANT := armv8-a
+TARGET_CPU_ABI := arm64-v8a
+# TODO: Do we need different CPU variants for different ARM processors?
+# E.g.: Snapdragon X Elite relies on ARMv8.7-A specification
+TARGET_CPU_VARIANT := cortex-a53
 
-$(call inherit-product, device/google/croissandro/factory_common.mk)
-$(call inherit-product, device/google/croissandro/device-croissandro.mk)
+# Targets only the primary system architecture (ARM64) for both libraries and the daemon
+AUDIOSERVER_MULTILIB := first
 
-PRODUCT_NAME := factory_croissandro
-PRODUCT_DEVICE := croissandro
-PRODUCT_MODEL := Factory build on CroissAndro
-PRODUCT_BRAND := CroissAndro
-PRODUCT_MANUFACTURER := CroissAndro
+# Cross-build
+# TODO: Do we need Windows and Darwin support?
+HOST_CROSS_OS := linux_musl
+HOST_CROSS_ARCH := arm64
+HOST_CROSS_2ND_ARCH :=
+
+-include device/croissandro/shared/BoardConfig.mk

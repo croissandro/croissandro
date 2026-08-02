@@ -338,7 +338,7 @@ TARGET_RECOVERY_PIXEL_FORMAT := ABGR_8888
 # Until then, recovery uses AOSP's default librecovery_ui_default implementation.
 # TARGET_RECOVERY_UI_LIB := librecovery_ui_croissandro
 
-BOARD_SUPER_PARTITION_SIZE := 7516192768  # 7GiB
+BOARD_SUPER_PARTITION_SIZE := 8589934592  # 8GiB
 BOARD_SUPER_PARTITION_GROUPS := csndro_system csndro_vendor
 BOARD_CSNDRO_SYSTEM_PARTITION_LIST := product system system_ext system_dlkm
 BOARD_CSNDRO_SYSTEM_SIZE := 6845104128  # 6.375GiB

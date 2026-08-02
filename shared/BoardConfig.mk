@@ -334,7 +334,9 @@ DHCPCD_USE_DBUS := no
 DHCPCD_USE_SCRIPT := yes
 
 TARGET_RECOVERY_PIXEL_FORMAT := ABGR_8888
-TARGET_RECOVERY_UI_LIB := librecovery_ui_croissandro
+# TODO(croissandro): Enable this after adding the device-specific recovery UI.
+# Until then, recovery uses AOSP's default librecovery_ui_default implementation.
+# TARGET_RECOVERY_UI_LIB := librecovery_ui_croissandro
 
 BOARD_SUPER_PARTITION_SIZE := 7516192768  # 7GiB
 BOARD_SUPER_PARTITION_GROUPS := croissandro_system_dynamic_partitions croissandro_vendor_dynamic_partitions

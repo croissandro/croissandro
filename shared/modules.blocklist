@@ -14,11 +14,16 @@
 # limitations under the License.
 #
 
-PRODUCT_MAKEFILES := \
-    croissandro_x86_64_only_pc:$(LOCAL_DIR)/croissandro_x86_64_only/pc/croissandro.mk \
-    croissandro_arm64_only_pc:$(LOCAL_DIR)/croissandro_arm64_only/pc/croissandro.mk
+# ptp_kvm.ko should only load when the kvm hypervisor is available on the target
+blocklist ptp_kvm.ko
+blocklist vkms.ko
 
-
-COMMON_LUNCH_CHOICES := \
-    croissandro_x86_64_only_pc-trunk_staging-userdebug \
-    croissandro_arm64_only_pc-trunk_staging-userdebug
+# CroissAndro assumes /dev/snd/pcmC0D0p, the first ALSA playback device,
+# represents a virtio-snd playback device.
+#
+# When audio loopback device gets loaded earlier, that device becomes a
+# loopback audio device, and no output from audio HAL gets forwarded to the
+# host.
+#
+# Prevent it from loading completely as it's not needed in CroissAndro.
+blocklist snd-aloop.ko

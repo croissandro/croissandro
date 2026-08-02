@@ -14,11 +14,5 @@
 # limitations under the License.
 #
 
-PRODUCT_MAKEFILES := \
-    croissandro_x86_64_only_pc:$(LOCAL_DIR)/croissandro_x86_64_only/pc/croissandro.mk \
-    croissandro_arm64_only_pc:$(LOCAL_DIR)/croissandro_arm64_only/pc/croissandro.mk
-
-
-COMMON_LUNCH_CHOICES := \
-    croissandro_x86_64_only_pc-trunk_staging-userdebug \
-    croissandro_arm64_only_pc-trunk_staging-userdebug
+# May be booted using different bootloaders, so don't have the single one.
+TARGET_NO_BOOTLOADER := true

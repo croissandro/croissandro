@@ -14,11 +14,15 @@
 # limitations under the License.
 #
 
-PRODUCT_MAKEFILES := \
-    croissandro_x86_64_only_pc:$(LOCAL_DIR)/croissandro_x86_64_only/pc/croissandro.mk \
-    croissandro_arm64_only_pc:$(LOCAL_DIR)/croissandro_arm64_only/pc/croissandro.mk
+PRODUCT_MANIFEST_FILES += device/croissandro/shared/config/product_manifest.xml
+SYSTEM_EXT_MANIFEST_FILES += device/croissandro/shared/config/system_ext_manifest.xml
 
+$(call inherit-product, $(SRC_TARGET_DIR)/product/handheld_vendor.mk)
 
-COMMON_LUNCH_CHOICES := \
-    croissandro_x86_64_only_pc-trunk_staging-userdebug \
-    croissandro_arm64_only_pc-trunk_staging-userdebug
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/pc_core_hardware.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/pc_core_hardware.xml
+
+$(call inherit-product, frameworks/native/build/tablet-7in-xhdpi-2048-dalvik-heap.mk)
+$(call inherit-product, device/croissandro/shared/device.mk)
+
+DEVICE_PACKAGE_OVERLAYS += device/croissandro/shared/pc/overlay

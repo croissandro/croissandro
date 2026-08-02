@@ -516,9 +516,9 @@ PRODUCT_PACKAGES += \
 ifneq ($(TARGET_NO_RECOVERY),true)
 
 PRODUCT_COPY_FILES += \
-    device/croissandro/shared/config/init.recovery.rc:$(TARGET_COPY_OUT_RECOVERY)/root/init.recovery.cutf_cvm.rc \
+    device/croissandro/shared/config/init.recovery.rc:$(TARGET_COPY_OUT_RECOVERY)/root/init.recovery.croissandro_vm.rc \
     device/croissandro/shared/config/cgroups.json:$(TARGET_COPY_OUT_RECOVERY)/root/vendor/etc/cgroups.json \
-    device/croissandro/shared/config/ueventd.rc:$(TARGET_COPY_OUT_RECOVERY)/root/ueventd.cutf_cvm.rc \
+    device/croissandro/shared/config/ueventd.rc:$(TARGET_COPY_OUT_RECOVERY)/root/ueventd.croissandro_vm.rc \
 
 PRODUCT_PACKAGES += \
     update_engine_sideload
@@ -557,7 +557,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_HOST_PACKAGES += socket_vsock_proxy
 
 #for Confirmation UI
-PRODUCT_SOONG_NAMESPACES += vendor/google_devices/common/proprietary/confirmatioui_hal
+# TODO: Implement a real Confirmation UI HAL for croissandro
+# PRODUCT_SOONG_NAMESPACES += vendor/google_devices/common/proprietary/confirmatioui_hal
 
 # Need this so that the application's loop on reading input can be synchronized
 # with HW VSYNC

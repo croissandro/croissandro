@@ -339,12 +339,12 @@ TARGET_RECOVERY_PIXEL_FORMAT := ABGR_8888
 # TARGET_RECOVERY_UI_LIB := librecovery_ui_croissandro
 
 BOARD_SUPER_PARTITION_SIZE := 7516192768  # 7GiB
-BOARD_SUPER_PARTITION_GROUPS := croissandro_system_dynamic_partitions croissandro_vendor_dynamic_partitions
-BOARD_CROISSANDRO_SYSTEM_DYNAMIC_PARTITIONS_PARTITION_LIST := product system system_ext system_dlkm
-BOARD_CROISSANDRO_SYSTEM_DYNAMIC_PARTITIONS_SIZE := 6845104128  # 6.375GiB
-BOARD_CROISSANDRO_VENDOR_DYNAMIC_PARTITIONS_PARTITION_LIST := odm vendor vendor_dlkm odm_dlkm
+BOARD_SUPER_PARTITION_GROUPS := csndro_system csndro_vendor
+BOARD_CSNDRO_SYSTEM_PARTITION_LIST := product system system_ext system_dlkm
+BOARD_CSNDRO_SYSTEM_SIZE := 6845104128  # 6.375GiB
+BOARD_CSNDRO_VENDOR_PARTITION_LIST := odm vendor vendor_dlkm odm_dlkm
 # 1404MiB, reserve 4MiB for dynamic partition metadata
-BOARD_CROISSANDRO_VENDOR_DYNAMIC_PARTITIONS_SIZE := 1472200704
+BOARD_CSNDRO_VENDOR_SIZE := 1472200704
 BOARD_BUILD_SUPER_IMAGE_BY_DEFAULT := true
 BOARD_SUPER_IMAGE_IN_UPDATE_PACKAGE := true
 TARGET_RELEASETOOLS_EXTENSIONS := device/croissandro/shared
@@ -378,7 +378,7 @@ BOARD_KERNEL_CMDLINE += firmware_class.path=/vendor/etc/
 # Needed to boot Android
 BOARD_KERNEL_CMDLINE += loop.max_part=7
 BOARD_KERNEL_CMDLINE += init=/init
-BOARD_BOOTCONFIG += androidboot.hardware=cutf_cvm
+BOARD_BOOTCONFIG += androidboot.hardware=croissandro_vm
 
 # TODO(b/182417593): vsock transport is a module on some kernels and builtin
 # on others. To maintain the buffer size setting across these two configs,

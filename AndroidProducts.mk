@@ -15,10 +15,9 @@
 #
 
 PRODUCT_MAKEFILES := \
-    croissandro_x86_64_only_pc:$(LOCAL_DIR)/croissandro_x86_64_only/pc/croissandro.mk \
-    croissandro_arm64_only_pc:$(LOCAL_DIR)/croissandro_arm64_only/pc/croissandro.mk
-
+    croissandro_x86_64_only_phone:$(LOCAL_DIR)/croissandro_x86_64_only/phone/aosp_croissandro.mk \
+    croissandro_arm64_only_phone:$(LOCAL_DIR)/croissandro_arm64_only/phone/aosp_croissandro.mk
 
 COMMON_LUNCH_CHOICES := \
-    croissandro_x86_64_only_pc-trunk_staging-userdebug \
-    croissandro_arm64_only_pc-trunk_staging-userdebug
+    croissandro_x86_64_only_phone-trunk_staging-userdebug \
+    croissandro_arm64_only_phone-trunk_staging-userdebug

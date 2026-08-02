@@ -14,21 +14,13 @@
 # limitations under the License.
 #
 
-TARGET_BOARD_PLATFORM := vsoc_arm64
-TARGET_ARCH := arm64
-TARGET_ARCH_VARIANT := armv8-a
-TARGET_CPU_ABI := arm64-v8a
-# TODO: Do we need different CPU variants for different ARM processors?
-# E.g.: Snapdragon X Elite relies on ARMv8.7-A specification
-TARGET_CPU_VARIANT := cortex-a53
+$(call inherit-product, device/google/cuttlefish/vsoc_x86_64_only/phone/aosp_cf.mk)
 
-# Targets only the primary system architecture (ARM64) for both libraries and the daemon
-AUDIOSERVER_MULTILIB := first
+PRODUCT_NAME := croissandro_x86_64_only_phone
+PRODUCT_DEVICE := vsoc_x86_64
+PRODUCT_MANUFACTURER := CroissAndro
+PRODUCT_MODEL := CroissAndro x86_64 PC (64-bit only)
 
-# Cross-build
-# TODO: Do we need Windows and Darwin support?
-HOST_CROSS_OS := linux_musl
-HOST_CROSS_ARCH := arm64
-HOST_CROSS_2ND_ARCH :=
-
--include device/croissandro/shared/BoardConfig.mk
+PRODUCT_VENDOR_PROPERTIES += \
+    ro.soc.manufacturer=$(PRODUCT_MANUFACTURER) \
+    ro.soc.model=$(PRODUCT_DEVICE)

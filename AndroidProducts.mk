@@ -15,10 +15,7 @@
 #
 
 PRODUCT_MAKEFILES := \
-    croissandro_x86_64_only_pc:$(LOCAL_DIR)/croissandro_x86_64_only/pc/croissandro.mk \
-    croissandro_arm64_only_pc:$(LOCAL_DIR)/croissandro_arm64_only/pc/croissandro.mk
-
+    croissandro_hyperv_x86_64:$(LOCAL_DIR)/products/hyperv_x86_64.mk
 
 COMMON_LUNCH_CHOICES := \
-    croissandro_x86_64_only_pc-trunk_staging-userdebug \
-    croissandro_arm64_only_pc-trunk_staging-userdebug
+    croissandro_hyperv_x86_64-trunk_staging-userdebug

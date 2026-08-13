@@ -14,21 +14,11 @@
 # limitations under the License.
 #
 
-TARGET_BOARD_PLATFORM := vsoc_arm64
-TARGET_ARCH := arm64
-TARGET_ARCH_VARIANT := armv8-a
-TARGET_CPU_ABI := arm64-v8a
-# TODO: Do we need different CPU variants for different ARM processors?
-# E.g.: Snapdragon X Elite relies on ARMv8.7-A specification
-TARGET_CPU_VARIANT := cortex-a53
+# Reusable 64-bit-only x86 Android architecture policy. Machine-specific
+# BoardConfigs include this file and add their kernel/device contract.
+TARGET_ARCH := x86_64
+TARGET_ARCH_VARIANT := x86_64
+TARGET_CPU_VARIANT := generic
+TARGET_CPU_ABI := x86_64
 
-# Targets only the primary system architecture (ARM64) for both libraries and the daemon
-AUDIOSERVER_MULTILIB := first
-
-# Cross-build
-# TODO: Do we need Windows and Darwin support?
-HOST_CROSS_OS := linux_musl
-HOST_CROSS_ARCH := arm64
-HOST_CROSS_2ND_ARCH :=
-
--include device/croissandro/shared/BoardConfig.mk
+TARGET_PRELINK_MODULE := false

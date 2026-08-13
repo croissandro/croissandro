@@ -14,8 +14,9 @@
 # limitations under the License.
 #
 
+include device/croissandro/shared/board/x86_64.mk
 
-# Reduce slab size usage from virtio vsock to reduce slab fragmentation
-options vmw_vsock_virtio_transport_common virtio_transport_max_vsock_pkt_buf_size=16384
-# TODO: Remove once CroissAndro shares a wifi implementation
-options mac80211_hwsim radios=0
+# PI-0 defines userspace only. PI-1 replaces this generic-system board policy
+# with the Hyper-V kernel and diagnostic initramfs contract.
+TARGET_NO_KERNEL := true
+include build/make/target/board/BoardConfigGsiCommon.mk

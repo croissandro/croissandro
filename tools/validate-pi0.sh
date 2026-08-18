@@ -84,6 +84,10 @@ dumpvar() {
   echo "error: PI-0 unexpectedly selects a kernel" >&2
   exit 1
 }
+[[ $(dumpvar PRODUCT_SHIPPING_API_LEVEL) == "37" ]] || {
+  echo "error: CroissAndro must launch at API level 37" >&2
+  exit 1
+}
 
 if ${check_artifacts}; then
   product_out="out/target/product/${product}"
